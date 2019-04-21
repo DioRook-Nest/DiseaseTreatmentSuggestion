@@ -27,7 +27,7 @@ test=pd.read_csv('test.csv')
 df_x1=test.iloc[:,1:]
 df_y1=test.iloc[:,0]
 x_test,y_test=df_x1,df_y1
-#print(x_train,y_train)
+
 parameters={
            'n_estimators': 10,       
            }
