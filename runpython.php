@@ -1,7 +1,10 @@
 <?php
-
-    if(isset($_POST['next'])){
+    $arr=$_POST;
+    array_shift($arr);
+    if(isset($_POST['next']) and !empty($arr)){
+        
         $arr=$_POST;
+        array_shift($arr);
         $_POST=array();
         #$arr=unserialize(base64_decode($_POST['ip'])) ;
         $k1=json_encode($arr);
@@ -17,10 +20,13 @@
         $_SESSION['opt']=$output;
         if($output)
             header('Location: symp.php');
+        else
+            echo "Error";
             exit;
+        
     }
     else{
-        header('Location: dis.php');
+        header('Location: output.php');
         exit;
     }
     
