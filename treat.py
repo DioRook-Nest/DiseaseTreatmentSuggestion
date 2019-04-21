@@ -14,7 +14,10 @@ def treatmentlist(sub,c):
     for k in key:
         result=result.append([prescriptions.loc[prescriptions['DRUG_NAME_GENERIC']==k,'STARTDATE':'SEQ_NUM'].iloc[0]])
         
+    result=result.reset_index(drop=True)
+    result.index+=1
     print(result)
+    result.to_csv('res.csv')
     return result
 
 if __name__=='__main__':
