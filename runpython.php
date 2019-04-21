@@ -2,6 +2,7 @@
 
     if(isset($_POST['next'])){
         $arr=$_POST;
+        array_shift($arr);
         $_POST=array();
         #$arr=unserialize(base64_decode($_POST['ip'])) ;
         $k1=json_encode($arr);
