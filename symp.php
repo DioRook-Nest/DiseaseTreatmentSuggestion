@@ -38,7 +38,7 @@
   <div class="card-header text-center"><h4><?php echo $x; ?></h4></div>
   <div class="card-body justify-content-center">
     <h6 class="card-title text-center">Severity</h6>
-      <input class="btn btn-danger" type="radio" name="<?php echo $x;?>"  value=0>Low&nbsp;
+      <input type="radio" name="<?php echo $x;?>"  value=0>Low&nbsp;
       <input type="radio" name="<?php echo $x;?>" value=1>Mild &nbsp;
       <input type="radio" name="<?php echo $x;?>" value=2>Moderate &nbsp;
       <input type="radio" name="<?php echo $x;?>" value=3>High

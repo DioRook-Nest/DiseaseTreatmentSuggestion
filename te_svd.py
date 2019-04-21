@@ -4,15 +4,17 @@ import json
 import sys
 import os
 import ast
+
 A=pd.read_csv("final_dataset_matrix.csv")
+
 col=A.columns.values 
 #sp=ast.literal_eval(sys.argv[1]) 
 #sp=list(sys.argv[1][0])
 
-'''with open('rem.json') as data:
+with open('rem.json') as data:
 
-  sp=json.load(data)'''
-sp={'Lower abdominal pain':0,'Shortness of breath':3,'Congestion in chest or lungs':1,'Fever':2,'Alcohol abuse':4,'Delusions or hallucinations':2}
+  sp=json.load(data)
+#sp={'Insomnia (Trouble sleeping)':3,'Lower abdominal pain':0,'Shortness of breath':3,'Congestion in chest or lungs':1,'Fever':2,'Alcohol abuse':4,'Delusions or hallucinations':2,'Difficulty breathing':4,'Chest pressure':3,'Anger':2,'Impotence':1}
 stat=0
 if not os.path.isfile('remove.csv'):
   temp=pd.DataFrame(columns=['symptoms'])
@@ -26,6 +28,17 @@ if not os.path.isfile('remove.csv'):
   temp.to_csv("remove.csv",index=False)
   #print('yay')
   stat=1
+
+rt=[]
+
+if stat==0:
+  rem=pd.read_csv('remove.csv')
+  for key,value in sp.items():
+    rt.append(key)
+  rem=pd.concat([rem,pd.DataFrame(rt,columns=['symptoms'])],ignore_index=True)
+  rem=rem.drop_duplicates(subset='symptoms', keep='first')
+  rem.to_csv('remove.csv',index=False)
+
   
  
 if not os.path.isfile('test.csv'):
@@ -79,6 +92,7 @@ for column in crl:
     crl['weight']+=crl[column]
     crl=crl.drop(column,axis=1)
 crl=crl.drop(syl)
+#print('syl',syl)
 fin=crl.sort_values(by='weight',ascending=False)
 fl=fin[:9].index
 rt=[]
@@ -89,11 +103,11 @@ for f in fl:
 #
 #rem.append(rt,ignore_index=True)
 rt=[]
-if stat==0:
+'''if stat==0:
   for key,value in sp.items():
     rt.append(key)
   rem=pd.concat([rem,pd.DataFrame(rt,columns=['symptoms'])],ignore_index=True)
   rem=rem.drop_duplicates(subset='symptoms', keep='first')
-  rem.to_csv('remove.csv',index=False)
+  rem.to_csv('remove.csv',index=False)'''
 
 #print(rem)
