@@ -88,7 +88,7 @@ chart.render();
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <br>
 <br>
-<center><button type="button" class="btn btn-info">View Treatment</button></cenetr>
+<center><button type="button" class="btn btn-info">View Treatment</button></center>
 
 
 <?php
