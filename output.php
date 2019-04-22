@@ -92,7 +92,7 @@ chart.render();
 <br>
 <br>
 <form action="runpy2.php" method="post">
-<input type='hidden' name=disease value=<?php output() ?> >
+<input type='hidden' name=disease value="<?php output() ?>" >
 <center><button type="submit" class="btn btn-info">View Treatment</button></center>
 </form>
 
