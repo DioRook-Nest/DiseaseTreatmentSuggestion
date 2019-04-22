@@ -60,7 +60,7 @@
 </form>
 </div>
 <?php
-//print_r($arr);
+print_r($_POST);
 ?>    
 </body>
 </html>

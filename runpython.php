@@ -3,9 +3,7 @@
     array_shift($arr);
     if(isset($_POST['next']) and !empty($arr)){
         
-        $arr=$_POST;
-        array_shift($arr);
-        $_POST=array();
+        
         #$arr=unserialize(base64_decode($_POST['ip'])) ;
         $k1=json_encode($arr);
         $k= str_replace( '_', ' ', $k1);
