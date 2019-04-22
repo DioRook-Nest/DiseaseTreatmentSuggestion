@@ -63,7 +63,8 @@
       <th class="th-sm"><?php echo  htmlspecialchars($cell);?>
       </th>
     <?php }
-    fclose($f)
+    fclose($f);
+    unlink('res.csv');
     ?>
     </tr>
   </tfoot>

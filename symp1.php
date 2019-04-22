@@ -20,7 +20,7 @@
   <span class="navbar-brand mb-0 h1">Symptoms</span>
 </nav>
 <div class="container">
-<form method="post" action="runpython.php">
+<form method="post" action="runpython.php"><br>
 <div class="col-12 text-center"> 
 <input name=next type="submit" value=Next class="btn btn-warning col-2">
 </div> <br>
@@ -46,7 +46,7 @@
                                                <option value="Arm itching">ARM ITCHING</option>
                                                <option value="Calf swellinG">CALF SWELLING</option>
                                                <option value="Swollen gums">SWOLLEN GUMS</option>
-                                               <option value="Insomnia">INSOMNIA</option>
+                                               <option value="Insomnia - difficulty sleeping">INSOMNIA</option>
                                              </select><br><br>
                                              <h5>Select severity</h5>
                                              <input type="radio" name="r1" onclick="change1(this.name)" value=0>Low<br>
@@ -85,7 +85,7 @@ function change1(x)  {
                                                <option value="Arm itching">ARM ITCHING</option>
                                                <option value="Calf swellinG">CALF SWELLING</option>
                                                <option value="Swollen gums">SWOLLEN GUMS</option>
-                                               <option value="Insomnia">INSOMNIA</option>
+                                               <option value="Insomnia - difficulty sleeping">INSOMNIA</option>
                                              </select><br><br>
                                              <h5>Select severity</h5>
                                              <input type="radio" name="r2" onclick="change2(this.name)" value=0>Low<br>
@@ -120,11 +120,11 @@ function change2(x)  {
                                                <option value="Tired">TIRED</option>
                                                <option value="Dementia">DEMENTIA</option>
                                                <option value="Chest burning">CHEST BURNING</option>
-                                               <option value="Nasal congestion">NASAL CNGESTION</option>
+                                               <option value="Nasal congestion">NASAL CONGESTION</option>
                                                <option value="Arm itching">ARM ITCHING</option>
                                                <option value="Calf swellinG">CALF SWELLING</option>
                                                <option value="Swollen gums">SWOLLEN GUMS</option>
-                                               <option value="Insomnia">INSOMNIA</option>
+                                               <option value="Insomnia - difficulty sleeping">INSOMNIA</option>
                                              </select><br><br>
                                              <h5>Select severity</h5>
                                              <input type="radio" name="r3" onclick="change3(this.name)" value=0>Low<br>
@@ -163,7 +163,7 @@ function change3(x)  {
                                                <option value="Arm itching">ARM ITCHING</option>
                                                <option value="Calf swellinG">CALF SWELLING</option>
                                                <option value="Swollen gums">SWOLLEN GUMS</option>
-                                               <option value="Insomnia">INSOMNIA</option>
+                                               <option value="Insomnia - difficulty sleeping">INSOMNIA</option>
                                              </select><br><br>
                                              <h5>Select severity</h5>
                                              <input type="radio" name="r4" onclick="change4(this.name)" value=0>Low<br>
@@ -202,7 +202,7 @@ function change4(x)  {
                                                <option value="Arm itching">ARM ITCHING</option>
                                                <option value="Calf swellinG">CALF SWELLING</option>
                                                <option value="Swollen gums">SWOLLEN GUMS</option>
-                                               <option value="Insomnia">INSOMNIA</option>
+                                               <option value="Insomnia - difficulty sleeping">INSOMNIA</option>
                                              </select><br><br>
                                              <h5>Select severity</h5>
                                              <input type="radio" name="r5" onclick="change5(this.name)" value=0>Low<br>

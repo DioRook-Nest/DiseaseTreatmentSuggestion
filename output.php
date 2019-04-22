@@ -83,12 +83,19 @@ chart.render();
 </script>
 </head>
 <body>
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">Summary</span>
+</nav>
 <br>
 <center><div id="chartContainer" style="height: 370px; width: 1000px;"></div></center>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <br>
 <br>
-<center><button type="button" class="btn btn-info">View Treatment</button></center>
+<form action="runpy2.php" method="post">
+<input type='hidden' name=disease value=<?php output() ?> >
+<center><button type="submit" class="btn btn-info">View Treatment</button></center>
+</form>
+
 
 
 <?php

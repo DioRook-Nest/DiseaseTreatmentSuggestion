@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from difflib import get_close_matches
+import sys
 
 def closeMatches(word,patterns,thresh):
     return get_close_matches(word,patterns,cutoff=thresh)
@@ -21,7 +22,8 @@ def treatmentlist(sub,c):
     return result
 
 if __name__=='__main__':
-    inputdiag='pulmonary tuberculosis'
+    #inputdiag='pulmonary tuberculosis'
+    inputdiag=sys.argv[1]
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
     c=pd.read_csv('PRESCRIPTIONS.csv')
