@@ -54,7 +54,6 @@ $dataPoints = array(
   <div class="card">
     <center><div class="card-header"><h2>Predicted Diseases</h2></div></center>
     <center><div class="card-body"><h4><?php output() ?></h4></div>
-   
   </div>
 </div>
 <script>
@@ -78,7 +77,6 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 chart.render();
- 
 }
 </script>
 </head>
@@ -89,8 +87,6 @@ chart.render();
 <br>
 <br>
 <center><button type="button" class="btn btn-info">View Treatment</button></center>
-
-
 <?php
 unlink('test.csv');
 unlink('remove.csv');
