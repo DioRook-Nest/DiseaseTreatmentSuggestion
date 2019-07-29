@@ -17,13 +17,17 @@ def treatmentlist(sub,c):
         
     result=result.reset_index(drop=True)
     result.index+=1
-    print(result)
+    #print(result)
     result.to_csv('res.csv')
+    if result.empty:
+        print(0)
+    else:
+        print(1)
     return result
 
 if __name__=='__main__':
-    #inputdiag='pulmonary tuberculosis'
-    inputdiag=sys.argv[1]
+    inputdiag='Insomnia - sleeping disorder'
+    #inputdiag=sys.argv[1]
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
     c=pd.read_csv('PRESCRIPTIONS.csv')
@@ -34,18 +38,24 @@ if __name__=='__main__':
     #temp2=[i for i in ]
     temp=list(a['LONG_TITLE'].str.lower())  #if a['icd9_code'] in b['icd9_code'])
     #print(temp)
+    if ',' in inputdiag:
+        inputdiag=inputdiag.split(',')
+        inputdiag=inputdiag[0]
+    elif '-' in inputdiag:
+        inputdiag=inputdiag.split('-')
+        inputdiag=inputdiag[0]
     dt=inputdiag.lower().split( )
-    dt.reverse()
-    print(dt)
+    #dt.reverse()
+    #print(dt)
 
     l=len(dt)
-    inter=1/l
+    #inter=1/l
     thresh=0.6
 
-    diaglist=[i for i in temp if dt[0] in i]
-    #print(temp1)
-    diaglist=closeMatches(inputdiag ,diaglist,thresh)
-    print(diaglist)
+    diaglist1=[i for i in temp if dt[l-1] in i]
+    print(diaglist1)
+    diaglist=closeMatches(inputdiag ,diaglist1,thresh)
+    #print(diaglist[0])
     '''for wrd in dt:
         thresh+=thresh*inter
         tp=min(thresh,0.6)
@@ -55,15 +65,18 @@ if __name__=='__main__':
         print(temp)'''
 
     #print(temp)
-
-    ind=temp.index(diaglist[0])
+    if diaglist:
+        ind=temp.index(diaglist[0])
+    else:
+        ind=temp.index(diaglist1[0])
     diag_id=a.iloc[ind]
     #print(diag_id['icd9_code'])
-    tid=diag_id['ICD9_CODE']
-    #print(tid)
-    #tid=str(53081)
-    #print(b)
-    #interdiag=pd.DataFrame()
-    interdiag=b.loc[b['ICD9_CODE']==tid]
-    #print(interdiag)
-    treatmentlist(interdiag,c)
+    if not diag_id.empty:
+        tid=diag_id['ICD9_CODE']
+        print(tid)
+        #tid=str(53081)
+        #print(b)
+        #interdiag=pd.DataFrame()
+        interdiag=b.loc[b['ICD9_CODE']==tid]
+        #print(interdiag)
+        treatmentlist(interdiag,c)
