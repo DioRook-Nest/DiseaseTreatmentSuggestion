@@ -57,14 +57,10 @@
   </tbody>
   <tfoot>
     <tr>
-    <?php
-    foreach ($head as $cell) {
-    ?>
-      <th class="th-sm"><?php echo  htmlspecialchars($cell);?>
-      </th>
-    <?php }
+    
+    <?php 
     fclose($f);
-    unlink('res.csv');
+    
     ?>
     </tr>
   </tfoot>

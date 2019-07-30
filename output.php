@@ -10,11 +10,11 @@ $x4=count($output)-5;
 $x5=count($output)-6;
 function output()
 {
-  $output=$GLOBALS['res'];
+  $oc=$GLOBALS['res'];
+    #print_r($oc);
     
-    
-    $x=count($output)-1;
-    echo  $output[$x];
+    $x=count($oc)-1;
+    echo  $oc[$x];
 }
  
 $dataPoints = array(
@@ -98,10 +98,7 @@ chart.render();
 
 
 
-<?php
-unlink('test.csv');
-unlink('remove.csv');
-?> 
+
 </body> 
 </html>
 

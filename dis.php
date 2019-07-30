@@ -18,9 +18,6 @@
 <br/>
 <h1>This is your disease</h1>
 </div>
-<?php
-unlink('remove.csv');
-unlink('test.csv');
-?>    
+   
 </body>
 </html>

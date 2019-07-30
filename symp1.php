@@ -3,6 +3,14 @@
    #$arr=$_SESSION['arr']
    //$arr=array("Lower abdominal pain"=>0,"Shortness of breath"=>3,"Congestion in chest or lungs"=>1,"Fever"=>3,"Alcohol abuse"=>4);
 ?>
+<?php
+if(file_exists('test.csv'))
+  unlink('test.csv');
+if(file_exists('remove.csv'))  
+  unlink('remove.csv');
+if(file_exists('res.csv'))  
+  unlink('res.csv');
+?> 
 <!DOCTYPE html>
 <html>
 <head>

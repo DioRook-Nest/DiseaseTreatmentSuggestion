@@ -26,14 +26,29 @@ def treatmentlist(sub,c):
     return result
 
 if __name__=='__main__':
-    inputdiag='Insomnia - sleeping disorder'
-    #inputdiag=sys.argv[1]
+    #inputdiag='Insomnia - sleeping disorder'
+    inputdiag=sys.argv[1]
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
     c=pd.read_csv('PRESCRIPTIONS.csv')
     a=pd.DataFrame(a)
     b=pd.DataFrame(b)
     c=pd.DataFrame(c)
+    result=pd.DataFrame()
+
+    rem=pd.DataFrame(pd.read_csv('remove.csv'))
+    test=pd.DataFrame(pd.read_csv('test.csv'))
+    trem=list(rem['symptoms']) 
+    
+    vt=[]
+    for tr in trem:
+        vt.append(test.iloc[0,test.columns.get_loc(tr)])
+        
+    val=pd.DataFrame(vt,columns=['symptoms'])
+    val.to_csv('values.csv',index=False)
+    
+
+
     #print(a)
     #temp2=[i for i in ]
     temp=list(a['LONG_TITLE'].str.lower())  #if a['icd9_code'] in b['icd9_code'])
@@ -50,10 +65,10 @@ if __name__=='__main__':
 
     l=len(dt)
     #inter=1/l
-    thresh=0.6
+    thresh=0.4
 
     diaglist1=[i for i in temp if dt[l-1] in i]
-    print(diaglist1)
+    #print(diaglist1,dt)
     diaglist=closeMatches(inputdiag ,diaglist1,thresh)
     #print(diaglist[0])
     '''for wrd in dt:
@@ -63,20 +78,28 @@ if __name__=='__main__':
         temp=closeMatches(wrd ,temp1,tp)
         
         print(temp)'''
-
+    ind=-1
+    diag_id=pd.DataFrame()
     #print(temp)
     if diaglist:
         ind=temp.index(diaglist[0])
-    else:
+    elif diaglist1:
         ind=temp.index(diaglist1[0])
-    diag_id=a.iloc[ind]
+
+    if ind!=-1:    
+        diag_id=a.iloc[ind]
     #print(diag_id['icd9_code'])
     if not diag_id.empty:
         tid=diag_id['ICD9_CODE']
-        print(tid)
+        #print(tid)
         #tid=str(53081)
         #print(b)
         #interdiag=pd.DataFrame()
         interdiag=b.loc[b['ICD9_CODE']==tid]
         #print(interdiag)
-        treatmentlist(interdiag,c)
+        result=treatmentlist(interdiag,c)
+
+    if result.empty:
+        print(0)
+    else:
+        print(1)
