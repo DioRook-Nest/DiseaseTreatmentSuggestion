@@ -8,7 +8,14 @@ $x2=count($output)-3;
 $x3=count($output)-4;
 $x4=count($output)-5;
 $x5=count($output)-6;
-
+function output()
+{
+  $oc=$GLOBALS['res'];
+    #print_r($oc);
+    
+    $x=count($oc)-1;
+    echo  $oc[$x];
+}
  
 $dataPoints = array(
 	array("label"=> "$output[$x1]", "y"=> 750),
@@ -42,7 +49,14 @@ $dataPoints = array(
 
 
  
-
+<div class="container">
+  
+  <div class="card">
+    <center><div class="card-header"><h2>Predicted Diseases</h2></div></center>
+    <center><div class="card-body"><h4><?php output() ?></h4></div>
+   
+  </div>
+</div>
 <script>
 window.onload = function () {
  

@@ -49,8 +49,11 @@ saveModel(model)'''
 model=loadModel()
 rf_predictions =model.predict(x_test)
 a= rf_predictions[0]
+
+file1=open('disease.txt','w')
+file1.write(a)
+file1.close()
+
 print(a)
-
-
 
 
