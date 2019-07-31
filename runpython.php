@@ -1,7 +1,7 @@
 <?php
     $arr=$_POST;
     array_shift($arr);
-    if(isset($_POST['next']) and !empty($arr)){
+    if(!empty($arr)){
         
         
         #$arr=unserialize(base64_decode($_POST['ip'])) ;
@@ -14,6 +14,11 @@
         $cmd='python "te_svd.py" ';
         $p=exec($cmd,$output); 
         //print_r($output);
+        
+        
+    }
+    if(isset($_POST['next'])){
+
         session_start();
         $_SESSION['opt']=$output;
         if($output)
@@ -21,10 +26,13 @@
         else
             echo "Error";
             exit;
-        
+
     }
     else{
-        header('Location: output.php');
+        session_start();
+        $_SESSION['abcd']=1;
+       
+        header('Location: /AI_Care_tina/medical.php');
         exit;
     }
     
