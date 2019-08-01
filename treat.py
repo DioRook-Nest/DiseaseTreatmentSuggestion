@@ -26,7 +26,7 @@ def treatmentlist(sub,c):
     return result
 
 if __name__=='__main__':
-    #inputdiag='Insomnia - sleeping disorder'
+    #inputdiag='cough'
     inputdiag=sys.argv[1]
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
@@ -66,11 +66,15 @@ if __name__=='__main__':
     l=len(dt)
     #inter=1/l
     thresh=0.4
-
-    diaglist1=[i for i in temp if dt[l-1] in i]
+    dset=set()
+    for i in range(l):
+        for j in temp:
+            if dt[i] in j:
+                dset.add(j)
+    #diaglist1=[i for i in temp if dt[l-1] in i]
     #print(diaglist1,dt)
-    diaglist=closeMatches(inputdiag ,diaglist1,thresh)
-    #print(diaglist[0])
+    diaglist=closeMatches(inputdiag ,dset,thresh)
+    print(diaglist)
     '''for wrd in dt:
         thresh+=thresh*inter
         tp=min(thresh,0.6)
@@ -83,8 +87,8 @@ if __name__=='__main__':
     #print(temp)
     if diaglist:
         ind=temp.index(diaglist[0])
-    elif diaglist1:
-        ind=temp.index(diaglist1[0])
+    '''elif diaglist1:
+        ind=temp.index(diaglist1[0])'''
 
     if ind!=-1:    
         diag_id=a.iloc[ind]
