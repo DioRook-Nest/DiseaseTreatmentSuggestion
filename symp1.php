@@ -24,13 +24,13 @@ if(file_exists('res.csv'))
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav style="background-color:#1976D2;"; class="navbar navbar-dark">
   <span class="navbar-brand mb-0 h1">Symptoms</span>
 </nav>
 <div class="container">
 <form method="post" action="runpython.php"><br>
 <div class="col-12 text-center"> 
-<input name=next type="submit" value=Next class="btn btn-warning col-2">
+<input name=next type="submit" style="background-color:#1976D2"; value=Next class="btn btn-warning col-2">
 </div> <br>
 <div class=row>
 <div class="card-group " style="{display: flex;}">   
