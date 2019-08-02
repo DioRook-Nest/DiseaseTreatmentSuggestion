@@ -29,6 +29,10 @@
 
     }
     else{
+        exec('python "optimization.py" ',$output);
+        if(file_exists('disease.txt'))
+            $dis = file_get_contents('disease.txt');
+        #exec("python treat.py .$dis",$output);
         session_start();
         $_SESSION['abcd']=1;
        

@@ -56,6 +56,7 @@ rem=pd.read_csv('remove.csv')
 #test=pd.read_csv('test.csv')
 
 for key,value in sp.items():
+  value=int(value)
   if value==0:
     test[key][0]=5
   elif value==1:

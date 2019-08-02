@@ -54,6 +54,17 @@ file1=open('disease.txt','w')
 file1.write(a)
 file1.close()
 
+rem=pd.DataFrame(pd.read_csv('remove.csv'))
+test=pd.DataFrame(pd.read_csv('test.csv'))
+trem=list(rem['symptoms']) 
+    
+vt=[]
+for tr in trem:
+	vt.append(test.iloc[0,test.columns.get_loc(tr)])
+        
+val=pd.DataFrame(vt,columns=['symptoms'])
+val.to_csv('values.csv',index=False)
+
 print(a)
 
 
