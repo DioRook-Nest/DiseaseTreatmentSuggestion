@@ -36,17 +36,7 @@ if __name__=='__main__':
     c=pd.DataFrame(c)
     result=pd.DataFrame()
 
-    rem=pd.DataFrame(pd.read_csv('remove.csv'))
-    test=pd.DataFrame(pd.read_csv('test.csv'))
-    trem=list(rem['symptoms']) 
-    
-    vt=[]
-    for tr in trem:
-        vt.append(test.iloc[0,test.columns.get_loc(tr)])
-        
-    val=pd.DataFrame(vt,columns=['symptoms'])
-    val.to_csv('values.csv',index=False)
-    
+     
 
 
     #print(a)

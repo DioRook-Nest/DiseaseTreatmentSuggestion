@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <?php
 
 $f1 = fopen("DiseasePrediction/remove.csv", "r");
@@ -46,12 +47,6 @@ $dataPoints = array(
 ?>
 
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="DiseasePrediction/js/Chart.js"></script>
-  <script src="DiseasePrediction/js/palette.js"></script>
  
 
   <div class="container">
@@ -63,51 +58,13 @@ $dataPoints = array(
         </div>
      </div>     
 </div>
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></head>
 
+  
+  <script src="DiseasePrediction/js/Chart.js"></script>
+  <script src="DiseasePrediction/js/palette.js"></script>
+  <script src="DiseasePrediction/js/graph.js"></script>
 
-<script>
-
-window.onload = function () {
-	var data=<?php echo $data; ?>
-
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-	responsive: true,
-    type: 'pie',
-    data: {
-        labels: <?php echo $label; ?>,
-        datasets: [{
-            label: <?php echo $label; ?>,
-			data: data,
-			backgroundColor: palette('tol',data.length).map(function(hex){
-				return '#'+hex;
-			}),
-			
-            /* backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ], */
-            borderWidth: 1
-        }]
-    },
-    options: {
-        //animation.animateRotate: true
-    }
-});
-}
-</script>
 
 
 
