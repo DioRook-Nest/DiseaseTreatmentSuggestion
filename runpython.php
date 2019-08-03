@@ -35,7 +35,8 @@
         #exec("python treat.py .$dis",$output);
         session_start();
         $_SESSION['abcd']=1;
-       
+        if(file_exists('res.csv'))
+            unlink('res.csv');
         header('Location: /AI_Care_tina/medical.php');
         exit;
     }

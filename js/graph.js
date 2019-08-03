@@ -10,7 +10,7 @@ function callgraph(data,label) {
         datasets: [{
             label:label,
 			data: data,
-			backgroundColor: palette('tol',data.length).map(function(hex){
+			backgroundColor: palette('cb-Set1',data.length).map(function(hex){
 				return '#'+hex;
 			}),
 			

@@ -51,7 +51,7 @@ $dataPoints = array(
 
   <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-lg-6 mx-auto">
+        <div class="col-sm-12 col-lg-8 mx-auto">
             
 				<canvas id="myChart" width=400 height=400 ></canvas>
                 

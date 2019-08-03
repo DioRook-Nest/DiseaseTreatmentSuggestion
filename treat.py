@@ -3,8 +3,16 @@ import numpy as np
 from difflib import get_close_matches
 import sys
 
-def closeMatches(word,patterns,thresh):
-    return get_close_matches(word,patterns,cutoff=thresh)
+def closeMatches(word,patterns,thresh,du):
+    result=get_close_matches(word,patterns,cutoff=thresh)
+    l=[]
+    #print(result)
+    for r in result:
+        for p in  du:
+            if r in p.lower():
+                l.append(p)
+                break
+    return l
 
 def treatmentlist(sub,c):
     prescriptions=pd.merge(c,sub[['SUBJECT_ID','SEQ_NUM']],how='inner',on='SUBJECT_ID')
@@ -19,14 +27,11 @@ def treatmentlist(sub,c):
     result.index+=1
     #print(result)
     result.to_csv('res.csv')
-    if result.empty:
-        print(0)
-    else:
-        print(1)
+    
     return result
 
 if __name__=='__main__':
-    #inputdiag='cough'
+    #inputdiag='Ludwigs angina - severe infection in the floor of the mouth and neck'
     inputdiag=sys.argv[1]
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
@@ -41,7 +46,7 @@ if __name__=='__main__':
 
     #print(a)
     #temp2=[i for i in ]
-    temp=list(a['LONG_TITLE'].str.lower())  #if a['icd9_code'] in b['icd9_code'])
+    temp=list(a['LONG_TITLE']) #.str.lower())  #if a['icd9_code'] in b['icd9_code'])
     #print(temp)
     if ',' in inputdiag:
         inputdiag=inputdiag.split(',')
@@ -57,13 +62,15 @@ if __name__=='__main__':
     #inter=1/l
     thresh=0.4
     dset=set()
+    dsetu=set()
     for i in range(l):
         for j in temp:
-            if dt[i] in j:
-                dset.add(j)
+            if dt[i] in j.lower():
+                dset.add(j.lower())
+                dsetu.add(j)
     #diaglist1=[i for i in temp if dt[l-1] in i]
     #print(diaglist1,dt)
-    diaglist=closeMatches(inputdiag ,dset,thresh)
+    diaglist=closeMatches(inputdiag ,dset,thresh,dsetu)
     print(diaglist)
     '''for wrd in dt:
         thresh+=thresh*inter
