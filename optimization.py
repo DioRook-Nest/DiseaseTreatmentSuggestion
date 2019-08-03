@@ -65,7 +65,7 @@ file1=open('disease.txt','wb')
 file1.write(a.encode("utf-8"))
 file1.close()
 
-file1=open('conf.txt','wb')
+file1=open('conf.txt','w')
 file1.write(round(conf*100,2))
 file1.close()
 
