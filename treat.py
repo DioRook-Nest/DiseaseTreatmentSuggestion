@@ -31,6 +31,7 @@ def treatmentlist(sub,c):
     return result
 
 if __name__=='__main__':
+    
     #inputdiag='Ludwigs angina - severe infection in the floor of the mouth and neck'
     #inputdiag=sys.argv[1]
     f=open('disease.txt','r')
