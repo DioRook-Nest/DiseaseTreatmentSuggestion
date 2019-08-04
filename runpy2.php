@@ -1,7 +1,11 @@
 <?php
+session_start();
 $dis=trim(file_get_contents('disease.txt'));
 #echo $dis;
-$result=exec("python treat.py .$dis",$output);
-$_POST['result']=$result;
-    header('Location: /AI_Care_tina/doctor_details.php');
+#$result=exec("python treat.py ".$dis,$output);
+$result=exec("python treat.py ",$output);
+print_r($output);
+#session_start();
+$_SESSION["result"]=(int)$result;
+    header('Location: /AI-Care/doctor_details.php');
 ?>

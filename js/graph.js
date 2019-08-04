@@ -1,6 +1,8 @@
 function callgraph(data,label) {
 	//var data=data;
-
+    var arr=['cb-Set1','tol'];
+    var color=palette(arr,data.length);
+    console.log('11'+data);
 	var ctx = document.getElementById('myChart').getContext('2d');
 	var myChart = new Chart(ctx, {
 	responsive: true,
@@ -10,7 +12,7 @@ function callgraph(data,label) {
         datasets: [{
             label:label,
 			data: data,
-			backgroundColor: palette('cb-Set1',data.length).map(function(hex){
+			backgroundColor: color.map(function(hex){
 				return '#'+hex;
 			}),
 			

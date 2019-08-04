@@ -4,9 +4,9 @@ from difflib import get_close_matches
 import sys
 
 def closeMatches(word,patterns,thresh,du):
-    result=get_close_matches(word,patterns,cutoff=thresh)
+    result=get_close_matches(word,patterns,cutoff=0.3)
     l=[]
-    #print(result)
+    print(result)
     for r in result:
         for p in  du:
             if r in p.lower():
@@ -18,7 +18,7 @@ def treatmentlist(sub,c):
     prescriptions=pd.merge(c,sub[['SUBJECT_ID','SEQ_NUM']],how='inner',on='SUBJECT_ID')
     d=prescriptions['DRUG_NAME_GENERIC'].value_counts()[:10]
     key=list(d.keys())
-    print(key)
+    #print(key)
     result=pd.DataFrame()
     for k in key:
         result=result.append([prescriptions.loc[prescriptions['DRUG_NAME_GENERIC']==k,'STARTDATE':'SEQ_NUM'].iloc[0]])
@@ -32,7 +32,9 @@ def treatmentlist(sub,c):
 
 if __name__=='__main__':
     #inputdiag='Ludwigs angina - severe infection in the floor of the mouth and neck'
-    inputdiag=sys.argv[1]
+    #inputdiag=sys.argv[1]
+    f=open('disease.txt','r')
+    inputdiag=str(f.readline())
     a=pd.read_csv('d_icd_diagnoses.csv')
     b=pd.read_csv('DIAGNOSES_ICD.csv')
     c=pd.read_csv('PRESCRIPTIONS.csv')
@@ -40,8 +42,8 @@ if __name__=='__main__':
     b=pd.DataFrame(b)
     c=pd.DataFrame(c)
     result=pd.DataFrame()
-
-     
+    ip=inputdiag.lower()
+    #print('1',inputdiag)
 
 
     #print(a)
@@ -50,11 +52,14 @@ if __name__=='__main__':
     #print(temp)
     if ',' in inputdiag:
         inputdiag=inputdiag.split(',')
-        inputdiag=inputdiag[0]
+        #inputdiag=inputdiag[0]
     elif '-' in inputdiag:
         inputdiag=inputdiag.split('-')
-        inputdiag=inputdiag[0]
-    dt=inputdiag.lower().split( )
+        #inputdiag=inputdiag[0]
+    #dt=inputdiag.lower().split( )
+    dt=[]
+    for i in inputdiag:
+        dt.extend(i.lower().split( ))
     #dt.reverse()
     #print(dt)
 
@@ -70,15 +75,9 @@ if __name__=='__main__':
                 dsetu.add(j)
     #diaglist1=[i for i in temp if dt[l-1] in i]
     #print(diaglist1,dt)
-    diaglist=closeMatches(inputdiag ,dset,thresh,dsetu)
-    print(diaglist)
-    '''for wrd in dt:
-        thresh+=thresh*inter
-        tp=min(thresh,0.6)
-        
-        temp=closeMatches(wrd ,temp1,tp)
-        
-        print(temp)'''
+    diaglist=closeMatches(ip ,dset,thresh,dsetu)
+    #print(dset,'close match',diaglist)
+    
     ind=-1
     diag_id=pd.DataFrame()
     #print(temp)

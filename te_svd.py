@@ -58,13 +58,13 @@ rem=pd.read_csv('remove.csv')
 for key,value in sp.items():
   value=int(value)
   if value==0:
-    test[key][0]=5
+    test[key][0]=1
   elif value==1:
-    test[key][0]=25
+    test[key][0]=2
   elif value==2:
-    test[key][0]=45
+    test[key][0]=3
   else:
-    test[key][0]=75
+    test[key][0]=4
 
 test.to_csv('test.csv',index=False)
 

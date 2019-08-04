@@ -25,7 +25,7 @@ def flatten(seq):
 			yield el
 
 #### Training data ####
-'''data=pd.read_csv('final_dataset_matrix.csv')
+'''data=pd.read_csv('norm_dataset_matrix.csv')
 df_x=data.iloc[:,1:]
 df_y=data.iloc[:,0]
 x_train,y_train=df_x,df_y'''
@@ -66,7 +66,7 @@ file1.write(a.encode("utf-8"))
 file1.close()
 
 file1=open('conf.txt','w')
-file1.write(round(conf*100,2))
+file1.write(str(round(conf*100,5)))
 file1.close()
 
 rem=pd.DataFrame(pd.read_csv('remove.csv'))
