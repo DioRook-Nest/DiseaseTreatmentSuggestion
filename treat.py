@@ -24,11 +24,11 @@ def treatmentlist(sub,c):
     result=pd.DataFrame()
     for k in key:
         result=result.append([prescriptions.loc[prescriptions['DRUG_NAME_GENERIC']==k,'STARTDATE':'SEQ_NUM'].iloc[0]])
-        
-    result['STARTDATE']=pd.to_datetime(result['STARTDATE'])
-    result['ENDDATE']=pd.to_datetime(result['ENDDATE'])    
-    result['DURATION(in Days)']=(result['ENDDATE']-result['STARTDATE']+pd.Timedelta(days=1)).dt.days
-    result=result[["DRUG_NAME_GENERIC","FORMULARY_DRUG_CD","DURATION(in Days)","PROD_STRENGTH","DOSE_VAL_RX","DOSE_UNIT_RX","GSN","NDC","FORM_VAL_DISP","FORM_UNIT_DISP","ROUTE"]]
+    if not result.empty:  
+        result['STARTDATE']=pd.to_datetime(result['STARTDATE'])
+        result['ENDDATE']=pd.to_datetime(result['ENDDATE'])    
+        result['DURATION(in Days)']=(result['ENDDATE']-result['STARTDATE']+pd.Timedelta(days=1)).dt.days
+        result=result[["DRUG_NAME_GENERIC","FORMULARY_DRUG_CD","DURATION(in Days)","PROD_STRENGTH","DOSE_VAL_RX","DOSE_UNIT_RX","GSN","NDC","FORM_VAL_DISP","FORM_UNIT_DISP","ROUTE"]]
     
     result=result.reset_index(drop=True)
     result.index+=1
@@ -62,7 +62,7 @@ if __name__=='__main__':
     ip=inputdiag.lower()
     if '-' in inputdiag:
         inputdiag=inputdiag.split('-')
-        #inputdiag=inputdiag[0]
+        ip=inputdiag[0].lower()
     elif ',' in inputdiag:
         #ip=inputdiag.lower()
         inputdiag=inputdiag.split(',')
