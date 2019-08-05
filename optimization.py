@@ -66,7 +66,7 @@ file1.write(a.encode("utf-8"))
 file1.close()
 
 file1=open('conf.txt','w')
-file1.write(str(round(conf*100,5)))
+file1.write(str(round(conf*100,3)))
 file1.close()
 
 rem=pd.DataFrame(pd.read_csv('remove.csv'))
