@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from difflib import get_close_matches
 import sys
+from fuzzywuzzy import fuzz 
+from fuzzywuzzy import process
 
 def closeMatches(word,patterns,thresh,du):
     result=get_close_matches(word,patterns,cutoff=0.3)
@@ -42,7 +44,7 @@ if __name__=='__main__':
     b=pd.DataFrame(b)
     c=pd.DataFrame(c)
     result=pd.DataFrame()
-    ip=inputdiag.lower()
+    
     #print('1',inputdiag)
 
 
@@ -50,39 +52,60 @@ if __name__=='__main__':
     #temp2=[i for i in ]
     temp=list(a['LONG_TITLE']) #.str.lower())  #if a['icd9_code'] in b['icd9_code'])
     #print(temp)
-    if ',' in inputdiag:
-        inputdiag=inputdiag.split(',')
-        #inputdiag=inputdiag[0]
-    elif '-' in inputdiag:
+    ip=''
+    ip=inputdiag.lower()
+    if '-' in inputdiag:
         inputdiag=inputdiag.split('-')
         #inputdiag=inputdiag[0]
+    elif ',' in inputdiag:
+        #ip=inputdiag.lower()
+        inputdiag=inputdiag.split(',')
+        #inputdiag=inputdiag[0]
     #dt=inputdiag.lower().split( )
+    
     dt=[]
+    if isinstance(inputdiag,str):
+        inputdiag=[inputdiag]    
+    '''if ip=='':
+        ip=inputdiag[0].lower()'''
+
+    print('ip: ',ip,type(inputdiag))
     for i in inputdiag:
         dt.extend(i.lower().split( ))
     #dt.reverse()
-    #print(dt)
+    
 
-    l=len(dt)
+    
     #inter=1/l
     thresh=0.4
     dset=set()
     dsetu=set()
+    unwanted=['in','from','of','on']
+    dt=[i for i in dt if i  not in unwanted]
+    print(dt)
+    l=len(dt)
     for i in range(l):
         for j in temp:
             if dt[i] in j.lower():
                 dset.add(j.lower())
                 dsetu.add(j)
+                #break
     #diaglist1=[i for i in temp if dt[l-1] in i]
     #print(diaglist1,dt)
-    diaglist=closeMatches(ip ,dset,thresh,dsetu)
-    #print(dset,'close match',diaglist)
+    #diaglist=closeMatches(ip ,dset,thresh,dsetu)
     
+    # Get a list of matches ordered by score, default limit to 5 
+    diaglist=process.extract(ip, dsetu,scorer=fuzz.token_set_ratio) 
+
+    print("\nclose match",diaglist)
+    
+    dfl=diaglist[0][0]
     ind=-1
     diag_id=pd.DataFrame()
     #print(temp)
     if diaglist:
-        ind=temp.index(diaglist[0])
+        #ind=temp.index(diaglist[0])
+        ind=temp.index(dfl)
     '''elif diaglist1:
         ind=temp.index(diaglist1[0])'''
 
