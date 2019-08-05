@@ -25,6 +25,11 @@ def treatmentlist(sub,c):
     for k in key:
         result=result.append([prescriptions.loc[prescriptions['DRUG_NAME_GENERIC']==k,'STARTDATE':'SEQ_NUM'].iloc[0]])
         
+     result['STARTDATE']=pd.to_datetime(result['STARTDATE'])
+    result['ENDDATE']=pd.to_datetime(result['ENDDATE'])    
+    result['DURATION(in Days)']=(result['ENDDATE']-result['STARTDATE']+pd.Timedelta(days=1)).dt.days
+    result=result[["DURATION(in Days)","DRUG_NAME_GENERIC","FORMULARY_DRUG_CD","GSN","NDC","PROD_STRENGTH","DOSE_VAL_RX","DOSE_UNIT_RX","FORM_VAL_DISP","FORM_UNIT_DISP","ROUTE"]]
+    
     result=result.reset_index(drop=True)
     result.index+=1
     #print(result)
@@ -33,6 +38,7 @@ def treatmentlist(sub,c):
     return result
 
 if __name__=='__main__':
+    
     #inputdiag='Ludwigs angina - severe infection in the floor of the mouth and neck'
     #inputdiag=sys.argv[1]
     f=open('disease.txt','r')
