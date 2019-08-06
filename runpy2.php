@@ -7,5 +7,5 @@ $result=exec("python treat.py ",$output);
 print_r($output);
 #session_start();
 $_SESSION["result"]=(int)$result;
-    header('Location: /AI-Care/doctor_details.php');
+    header('Location: /AI_Care_tina/doctor_details.php');
 ?>

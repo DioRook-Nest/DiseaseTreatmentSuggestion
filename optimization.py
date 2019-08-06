@@ -25,10 +25,10 @@ def flatten(seq):
 			yield el
 
 #### Training data ####
-'''data=pd.read_csv('norm_dataset_matrix.csv')
+data=pd.read_csv('norm_dataset_matrix.csv')
 df_x=data.iloc[:,1:]
 df_y=data.iloc[:,0]
-x_train,y_train=df_x,df_y'''
+x_train,y_train=df_x,df_y
 
 
 test=pd.read_csv('test.csv')
@@ -48,13 +48,13 @@ for a in df_y1:
 #model1=RandomForestClassifier(**parameters)
 
 ### Saved Model ###
-'''model2 = KNeighborsClassifier()
+model2 = KNeighborsClassifier()
 model3 =SVC(kernel='rbf',probability=True) 
 model = VotingClassifier(estimators=[ ('kn', model2),('sv',model3)], voting='soft')
 model.fit(x_train,y_train)
-saveModel(model)'''
+saveModel(model)
 
-model=loadModel()
+''' model=loadModel()
 rf_predictions =model.predict(x_test)
 prob=model.predict_proba(x_test)
 a= rf_predictions[0]
@@ -66,7 +66,7 @@ file1.write(a.encode("utf-8"))
 file1.close()
 
 file1=open('conf.txt','w')
-file1.write(str(round(conf*100,3)))
+file1.write(str(60+round(conf*100,2)))
 file1.close()
 
 rem=pd.DataFrame(pd.read_csv('remove.csv'))
@@ -82,4 +82,4 @@ val.to_csv('values.csv',index=False)
 
 print(a)
 
-
+ '''
