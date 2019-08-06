@@ -46,27 +46,25 @@ $dataPoints = array(
 
 ?>
 
-  
- 
 
-  <div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-lg-6 mx-auto">
-            
-				<canvas id="myChart" width=400 height=400 ></canvas>
-                
-        </div>
-     </div>     
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-lg-8 mx-auto">
+
+			<canvas id="myChart" width=400 height=400></canvas>
+
+		</div>
+	</div>
 </div>
-<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></head>
 
-  
-  <script src="DiseasePrediction/js/Chart.js"></script>
-  <script src="DiseasePrediction/js/palette.js"></script>
-  <script src="DiseasePrediction/js/graph.js"></script>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
 
 
-
-
-
-
+<script src="DiseasePrediction/js/Chart.js"></script>
+<script src="DiseasePrediction/js/palette.js"></script>
+<script src="DiseasePrediction/js/graph.js"></script>
+<script src="DiseasePrediction/js/numeral.min.js"></script>

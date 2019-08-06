@@ -8,6 +8,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
+import numpy as np
 
 def saveModel(model):
     with open('saved_model.plk','wb') as fid:
@@ -16,8 +17,15 @@ def loadModel():
     with open('saved_model.plk','rb') as fid:
         return pickle.load(fid)
 
+def flatten(seq):
+	for el in seq:
+		if isinstance(el,list):
+			yield from flatten(el)
+		else:
+			yield el
+
 #### Training data ####
-'''data=pd.read_csv('final_dataset_matrix.csv')
+'''data=pd.read_csv('norm_dataset_matrix.csv')
 df_x=data.iloc[:,1:]
 df_y=data.iloc[:,0]
 x_train,y_train=df_x,df_y'''
@@ -41,23 +49,30 @@ for a in df_y1:
 
 ### Saved Model ###
 '''model2 = KNeighborsClassifier()
-model3 =SVC(kernel='rbf') 
-model = VotingClassifier(estimators=[ ('kn', model2),('sv',model3)], voting='hard')
+model3 =SVC(kernel='rbf',probability=True) 
+model = VotingClassifier(estimators=[ ('kn', model2),('sv',model3)], voting='soft')
 model.fit(x_train,y_train)
 saveModel(model)'''
 
 model=loadModel()
 rf_predictions =model.predict(x_test)
+prob=model.predict_proba(x_test)
 a= rf_predictions[0]
+print(a)
+conf=np.amax(prob)  #max(flatten(prob))
 
-file1=open('disease.txt','w')
-file1.write(a)
+file1=open('disease.txt','wb')
+file1.write(a.encode("utf-8"))
+file1.close()
+
+file1=open('conf.txt','w')
+file1.write(str(round(conf*100,3)))
 file1.close()
 
 rem=pd.DataFrame(pd.read_csv('remove.csv'))
 test=pd.DataFrame(pd.read_csv('test.csv'))
 trem=list(rem['symptoms']) 
-    
+   
 vt=[]
 for tr in trem:
 	vt.append(test.iloc[0,test.columns.get_loc(tr)])
