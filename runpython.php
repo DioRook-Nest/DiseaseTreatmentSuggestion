@@ -37,7 +37,7 @@
         $_SESSION['abcd']=1;
         if(file_exists('res.csv'))
             unlink('res.csv');
-        header('Location: /Ai-Care/medical.php');
+        header('Location: /AI-Care/medical.php');
         exit;
     }
     
