@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "508531979116",
+    "firebase_url": "https://geofire-19d26.firebaseio.com",
+    "project_id": "geofire-19d26",
+    "storage_bucket": "geofire-19d26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508531979116:android:f07e419d86d626e6ee3949",
+        "android_client_info": {
+          "package_name": "com.example.kinn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508531979116-m3q89vj1bfeaen232bahojgh591kpe6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kinn",
+            "certificate_hash": "f0b650d64d143675d9337fd23b059b1f8b69a8fe"
+          }
+        },
+        {
+          "client_id": "508531979116-8j08ne9o3gurihud13sgn5bleo3si6vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Yh6Kd4eMUo8pKw63hRZjE5M3MvepUR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508531979116-8j08ne9o3gurihud13sgn5bleo3si6vl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
